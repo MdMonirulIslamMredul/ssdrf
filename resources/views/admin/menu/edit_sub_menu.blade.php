@@ -14,17 +14,17 @@
                         @csrf
 
                             <input type="hidden" name="id" value="{{$sub_menu->id}}">
-                            
+
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" name="title" class="form-control" value="{{$sub_menu->title}}">
                         </div>
                         <div class="form-group">
-                            <label>Designation</label>
+                            <label> Type / Designation</label>
                             <input type="text" name="designation" class="form-control" value="{{$sub_menu->designation}}">
                         </div>
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>Audience / Name</label>
                             <input type="text" name="name" class="form-control" value="{{$sub_menu->name}}">
                         </div>
                         <div class="form-group">

@@ -18,11 +18,11 @@
                             <input type="text" name="title" class="form-control" placeholder="Title">
                         </div>
                         <div class="form-group">
-                            <label>Designation</label>
+                            <label> Type / Designation</label>
                             <input type="text" name="designation" class="form-control" placeholder="Designation">
                         </div>
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>Audience / Name</label>
                             <input type="text" name="name" class="form-control" placeholder="Name">
                         </div>
                         <div class="form-group">
