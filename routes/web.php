@@ -42,6 +42,7 @@ Route::get('/consultancy-page', [WebsiteController::class, 'tech_web_consultancy
 Route::get('/research-page', [WebsiteController::class, 'tech_web_research_page'])->name('research.page');
 Route::get('/research-details/{id}', [WebsiteController::class, 'tech_web_research_details'])->name('research.details');
 Route::get('/sub-menu-details/{id}', [WebsiteController::class, 'tech_web_sub_menu_details'])->name('submenu.details');
+Route::get('/menu-posts/{menu_id}', [WebsiteController::class, 'tech_web_all_sub_menus'])->name('menu.sub_menus');
 
 //---
 Route::get('/message-page', [WebsiteController::class, 'tech_web_message'])->name('message.page');

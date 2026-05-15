@@ -12,7 +12,9 @@ use App\Models\Notice;
 use App\Models\Gallery;
 use App\Models\Message;
 use App\Models\Service;
+use App\Models\Menu;
 use App\Models\Research;
+use App\Models\SubMenu;
 use App\Models\Enrollment;
 use App\Models\Membership;
 use App\Models\Testimonial;
@@ -38,8 +40,10 @@ class WebsiteController extends Controller
             'blogs'=>Blog::where('status',1)->where('add_home',1)->get(),
             'footer_blogs'=>Blog::where('status',1)->where('add_home',1)->take(2)->get(),
             'about'=>DB::table('abouts')->where('id',1)->first(),
+            'mission_vision'=>DB::table('abouts')->where('id',2)->first(),
             'titles'=>BannerAndTitle::get(),
             'notices'=>Notice::where('status',1)->take(6)->get(),
+            'programs'=>SubMenu::where('menu_id',3)->get(),
         ]);
     }
 
@@ -78,6 +82,15 @@ class WebsiteController extends Controller
         ]);
     }
 
+    public function tech_web_all_sub_menus($menu_id)
+    {
+        return view('frontend.consultancy.all_sub_menus', [
+            'menu'      => Menu::find($menu_id),
+            'sub_menus' => SubMenu::where('menu_id', $menu_id)->get(),
+            'banner'    => BannerAndTitle::where('page', 'gallery')->latest()->first(),
+        ]);
+    }
+
     public function tech_web_consultancy_page()
     {
         return view('frontend.consultancy.consultancy_page',[
@@ -87,7 +100,7 @@ class WebsiteController extends Controller
     public function tech_web_team_page()
     {
         return view('frontend.team.team_page',[
-          
+
             'banner'=>BannerAndTitle::where('page','instructor')->latest()->first(),
         ]);
     }
@@ -228,7 +241,7 @@ public function tech_web_testimonial_page()
 
         $user_roll = Auth::user();
 
-        $file = $request->file('photo');        
+        $file = $request->file('photo');
         $fileName = date('YmdHi').$file->getClientOriginalName();
         $file->move(public_path('enrollmentimage/student'),$fileName);
         $save_url = 'enrollmentimage/student/'.$fileName; //insert photo into database
@@ -283,7 +296,7 @@ public function tech_web_testimonial_page()
                 'institute_Instructions' => $request->institute_Instructions,
                 'updated_at' => Carbon::now(),
             ]);
-            
+
         }else{
             EnrollmentformInfo::insert([
                 'institute_name' => $request->institute_name,
@@ -296,10 +309,10 @@ public function tech_web_testimonial_page()
         }
         return redirect()->back();
 
-        
-        
+
+
     }
-    
+
 
 
 

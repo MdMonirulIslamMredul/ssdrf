@@ -61,8 +61,8 @@
     @include('frontend.about.about')
 
     {{--    about page end--}}
-    
-    
+
+
     <section class="text-white overflow-hidden"
          style="background:#062142; font-family: Soho, sans-serif;">
 
@@ -110,8 +110,7 @@
                         </h6>
 
                         <p class="opacity-75">
-                            To empower individuals and communities through quality soft skills education,
-                            leadership development, and sustainable capacity-building programs.
+                            {!! $mission_vision->details1 ?? '' !!}
                         </p>
 
                     </div>
@@ -126,7 +125,7 @@
                         </h6>
 
                         <p class="opacity-75">
-                            A world where every person has access to skills and mentorship to build a meaningful life.
+                            {!! $mission_vision->details2 ?? '' !!}
                         </p>
 
                     </div>
@@ -221,9 +220,12 @@
 
 </section>
     <!-- Categories Section Start -->
-    @include('frontend.services.services')
+    {{-- @include('frontend.services.services') --}}
     <!-- Categories Section End -->
 
+    <!-- Programs Section Start -->
+    @include('frontend.program.program_home')
+    <!-- Programs Section End -->
 
 
     <!-- Testimonial Section Start -->
