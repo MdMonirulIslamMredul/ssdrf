@@ -1,6 +1,3 @@
-
-
-
 <footer id="rs-footer" class="rs-footer home9-style main-home" style="background:#071123;">
     <div class="footer-top">
         <div class="container">
@@ -8,11 +5,12 @@
                 <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
                     <div class="footer-logo mb-30">
                         @php $logo = \App\Models\Logo::latest()->first() @endphp
-                        <a href="index.html"><img src="{{asset($logo->logo_image1??null)}}" alt=""></a>
+                        <a href="{{route('front.page')}}"><img src="{{asset($logo->logo_image1??null)}}" alt=""></a>
                     </div>
-                    <div class="textwidget pr-60 md-pr-15"><p class="white-color">{{$footer->details??null}}</p>
+                    <div class="textwidget pr-60 md-pr-15">
+                        <p class="white-color">{{$footer->details??null}}</p>
                     </div>
-                   
+
                 </div>
                 <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
                     <h3 class="widget-title">Address</h3>
@@ -45,7 +43,7 @@
                 </div>
                 <div class="col-lg-3 col-md-12 col-sm-12 footer-widget">
                     <h3 class="widget-title">Contact</h3>
-                     <ul  style="color:white">
+                    <ul style="color:white">
                         <li>
                             <a href="{{$links->facebook}}" style="color:white" target="_blank"><span><i class="fa fa-facebook"></i> Facebook</span></a> <br>
                         </li>

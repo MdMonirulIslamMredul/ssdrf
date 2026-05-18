@@ -99,22 +99,40 @@
 
                 <!-- Stats -->
                 <div class="row border-top mt-5 pt-4">
+                    @php
+                        $aboutCounter = $counter ?? \App\Models\Counter::find(1);
+                    @endphp
+                    @if($aboutCounter)
+                        <div class="col-4 text-center">
+                            <h3 class="fw-bold text-warning">{{ !empty($aboutCounter->value_1) ? trim($aboutCounter->value_1, '+ ') . '+' : '' }}</h3>
+                            <small class="text-muted text-uppercase">{{ $aboutCounter->title_1 ?? '' }}</small>
+                        </div>
 
-                    <div class="col-4 text-center">
-                        <h3 class="fw-bold text-warning">500+</h3>
-                        <small class="text-muted text-uppercase">Lives Impacted</small>
-                    </div>
+                        <div class="col-4 text-center">
+                            <h3 class="fw-bold text-warning">{{ !empty($aboutCounter->value_2) ? trim($aboutCounter->value_2, '+ ') . '+' : '' }}</h3>
+                            <small class="text-muted text-uppercase">{{ $aboutCounter->title_2 ?? '' }}</small>
+                        </div>
 
-                    <div class="col-4 text-center">
-                        <h3 class="fw-bold text-warning">9</h3>
-                        <small class="text-muted text-uppercase">Program Batches</small>
-                    </div>
+                        <div class="col-4 text-center">
+                            <h3 class="fw-bold text-warning">{{ !empty($aboutCounter->value_3) ? trim($aboutCounter->value_3, '+ ') . '+' : '' }}</h3>
+                            <small class="text-muted text-uppercase">{{ $aboutCounter->title_3 ?? '' }}</small>
+                        </div>
+                    @else
+                        <div class="col-4 text-center">
+                            <h3 class="fw-bold text-warning">500+</h3>
+                            <small class="text-muted text-uppercase">Lives Impacted</small>
+                        </div>
 
-                    <div class="col-4 text-center">
-                        <h3 class="fw-bold text-warning">50+</h3>
-                        <small class="text-muted text-uppercase">Trained Mentors</small>
-                    </div>
+                        <div class="col-4 text-center">
+                            <h3 class="fw-bold text-warning">9</h3>
+                            <small class="text-muted text-uppercase">Program Batches</small>
+                        </div>
 
+                        <div class="col-4 text-center">
+                            <h3 class="fw-bold text-warning">50+</h3>
+                            <small class="text-muted text-uppercase">Trained Mentors</small>
+                        </div>
+                    @endif
                 </div>
 
             </div>

@@ -23,6 +23,7 @@ use App\Models\PaymentNumber;
 use App\Models\BannerAndTitle;
 use App\Models\Enrollmentform;
 use App\Models\EnrollmentformInfo;
+use App\Models\Counter;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -44,6 +45,7 @@ class WebsiteController extends Controller
             'titles'=>BannerAndTitle::get(),
             'notices'=>Notice::where('status',1)->take(6)->get(),
             'programs'=>SubMenu::where('menu_id',3)->get(),
+            'counter'=>Counter::find(1),
         ]);
     }
 
@@ -113,9 +115,10 @@ class WebsiteController extends Controller
     }
 public function tech_web_testimonial_page()
 {
-    $testimonial = Testimonial::where('status',1)->latest()->first();
-
-    return view('frontend.testimonial.testimonial', compact('testimonial'));
+    return view('frontend.testimonial.testimonial_page', [
+        'testimonials' => Testimonial::where('status', 1)->get(),
+        'banner'       => BannerAndTitle::where('page', 'testimonial')->latest()->first(),
+    ]);
 }
     public function tech_web_blogs_page()
     {
