@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\BannerAndTitleController;
 use App\Http\Controllers\WebsiteSettingsController;
 use App\Http\Controllers\Admin\MembershipController;
+use App\Http\Controllers\CounterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -213,3 +214,8 @@ Route::resource('memberships', MembershipController::class)->middleware('is_admi
 //message start
 Route::resource('messages', MessageController::class)->middleware('is_admin');
 //message end
+
+//counter start
+Route::get('/edit-counter', [CounterController::class, 'tech_web_edit_counter'])->name('edit.counter')->middleware('is_admin');
+Route::post('/update-counter', [CounterController::class, 'tech_web_update_counter'])->name('update.counter')->middleware('is_admin');
+//counter end
